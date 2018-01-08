@@ -25,15 +25,22 @@ export function reducer(state = initiailState, action: fromPizzas.PizzasAction):
 			return {
 				...state,
 				loading: false,
-				loaded: false
+				loaded: false,
 			};
 		case fromPizzas.LOAD_PIZZAS_SUCCESS:
+			const data = action.payload;
+
 			return {
 				...state,
 				loading: false,
-				loaded: true
+				loaded: true,
+				data
 			}
 	}
 
 	return state;
 }
+
+export const getPizzasLoading = (state: PizzaState) => state.loading;
+export const getPizzasLoaded = (state: PizzaState) => state.loaded;
+export const getPizzas = (state: PizzaState) => state.data;
